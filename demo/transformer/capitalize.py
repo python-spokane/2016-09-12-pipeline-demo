@@ -3,6 +3,7 @@
 #
 
 """
+Transformer used to capitalize all strings in the content.
 """
 
 from string import capwords
@@ -10,6 +11,12 @@ from demo import coroutine
 
 
 def capitalize():
+    """
+    Transformer returning a modified list of content which after capitalization.
+
+    Returns a callable function which wraps the internal transforming coroutine, and
+    drives iteration via generator send().
+    """
 
     coroutine = generator()
 
@@ -21,6 +28,9 @@ def capitalize():
 
 @coroutine
 def generator():
+    """
+    Internal generator performs content capitalization.
+    """
 
     payload = None
 

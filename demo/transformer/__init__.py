@@ -3,6 +3,7 @@
 #
 
 """
+Transformer module for the pipeline demo.
 """
 
 from .capitalize import capitalize
@@ -16,9 +17,12 @@ __all__ = [
 
 
 def pipeline(*coroutines):
+    """
+    Return a callable which iterates all passed transformers in order. Returns the
+    modified content.
+    """
 
     def wrapped(content):
-
         for coroutine in coroutines:
             content = coroutine(content)
 

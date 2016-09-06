@@ -3,9 +3,8 @@
 #
 
 """
+Filter module for the pipeline demo.
 """
-
-from itertools import chain
 
 from demo.filter.size import size
 from demo.filter.duplicate import duplicate
@@ -18,9 +17,12 @@ __all__ = [
 
 
 def pipeline(*coroutines):
+    """
+    Return a callable which iterates all passed filters in order. Returns the
+    original content if successful, None if filtered.
+    """
 
     def wrapped(content):
-
         for coroutine in coroutines:
             content = coroutine(content)
 

@@ -3,6 +3,7 @@
 #
 
 """
+Input module for the pipeline demo.
 """
 
 from demo.input.file.stdin import consume as stdin

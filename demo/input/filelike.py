@@ -13,6 +13,12 @@ See:
 
 
 def consume(handle):
+    """
+    Generator which reads file-like objects via readline(), strips the trailing newline character,
+    and then splits the string into a list of strings.
+
+    The list is yielded to the caller.
+    """
 
     line = True
 

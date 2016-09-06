@@ -3,6 +3,7 @@
 #
 
 """
+Sample pipeline assembly for the demo.
 """
 
 from demo import input as inputs
@@ -12,6 +13,14 @@ from demo import transformer as transformers
 
 
 def stdin_stdout():
+    """
+    Consumes input from the STDIN source, and produces output on the STDOUT sink.
+
+    Filters:
+      None
+    Transformers:
+      None
+    """
 
     source = inputs.stdin()
     sink = outputs.stdout()
@@ -21,6 +30,15 @@ def stdin_stdout():
 
 
 def stdin_size_stdout():
+    """
+    Consumes input from the STDIN source, applies filtering, and produces output on the STDOUT sink.
+
+    Filtering:
+      size - limited to 12 words
+
+    Transformers:
+      None
+    """
 
     source = inputs.stdin()
     sink = outputs.stdout()
@@ -39,6 +57,16 @@ def stdin_size_stdout():
 
 
 def stdin_size_duplicate_stdout():
+    """
+    Consumes input from the STDIN source, applies filtering, and produces output on the STDOUT sink.
+
+    Filtering:
+      size - limited to 12 words
+      duplicate - no repeated lines
+
+    Transformers:
+      None
+    """
 
     source = inputs.stdin()
     sink = outputs.stdout()
@@ -58,6 +86,15 @@ def stdin_size_duplicate_stdout():
 
 
 def stdin_capitalize_stdout():
+    """
+    Consumes input from the STDIN source, applies transformations, and produces output on the STDOUT sink.
+
+    Filtering:
+        None
+
+    Transformers:
+      capitalization - each word will be capitalized
+    """
 
     source = inputs.stdin()
     sink = outputs.stdout()
