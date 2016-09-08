@@ -10,7 +10,9 @@ Demonstration of application design using pipeline processing (generators, corou
 
 # Summary
 
-This project will demonstrate how python applications can be designed as adaptable pipeline processors.
+This project will demonstrate how python applications can be designed as adaptable pipeline processors. Talk
+slides available at:
+  https://docs.google.com/presentation/d/1cUrmIOHYB0QcAYkMyO8uos6taU2jdwMWFI0pLksmVA8/edit#slide=id.p
 
 # Inputs
 
