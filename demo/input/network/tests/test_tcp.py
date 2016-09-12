@@ -19,19 +19,24 @@ def combine(content):
     return '\n'.join(content)
 
 
+def expected_format(content):
+    return [c.split(' ') for c in content]
+
+
 class TcpTestCase (TestCase):
 
     @patch('demo.input.network.tcp.socket')
     def test_single_line(self, _):
 
         content = ("This is line 1", )
+        expected = expected_format(content)
 
         with patch('demo.input.network.tcp.open', mock_open(read_data=combine(content))):
             # Manual iteration..
             generator = consume()
 
             # The first iteration should produce the mock content.
-            self.assertEqual(content[0], next(generator))
+            self.assertEqual(expected.pop(), next(generator))
 
             # EOF should raise a StopIteration..
             with self.assertRaises(StopIteration):
@@ -41,6 +46,7 @@ class TcpTestCase (TestCase):
     def test_multiple_lines(self, _):
 
         content = ("This is line 1", "This is line 2", "This is line 3")
+        expected = expected_format(content)
 
         with patch('demo.input.network.tcp.open', mock_open(read_data=combine(content))):
             # Manual iteration..
@@ -48,7 +54,7 @@ class TcpTestCase (TestCase):
 
             # Each iteration chunk was produced from the mock content.
             for index, _ in enumerate(content):
-                self.assertEqual(content[index], next(generator))
+                self.assertEqual(expected.pop(0), next(generator))
 
             # Then StopIteration..
             with self.assertRaises(StopIteration):
@@ -58,6 +64,7 @@ class TcpTestCase (TestCase):
     def test_multiple_lines_embedded_eof(self, _):
 
         content = ("This is line 1", "This is line 2", '', "This is line 4")
+        expected = expected_format(content)
 
         with patch('demo.input.network.tcp.open', mock_open(read_data=combine(content))):
             # Manual iteration..
@@ -65,7 +72,7 @@ class TcpTestCase (TestCase):
 
             # Each iteration chunk was produced from the mock content.
             for index, _ in enumerate((content[0], content[1])):
-                self.assertEqual(content[index], next(generator))
+                self.assertEqual(expected.pop(0), next(generator))
 
             # Then StopIteration on line 3.
             with self.assertRaises(StopIteration):

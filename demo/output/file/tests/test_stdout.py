@@ -26,7 +26,7 @@ class StdoutTestCase (TestCase):
         sys.stdout = buffer
 
         coroutine = produce()
-        coroutine.send(content)
+        coroutine(content)
 
         expected = ' '.join(content)
         expected = '{}\n'.format(expected)

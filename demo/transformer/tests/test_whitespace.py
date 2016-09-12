@@ -16,7 +16,7 @@ class WhitespaceTest (TestCase):
         content = ('This', 'is', 'the', 'payload')
 
         coroutine = whitespace()
-        response = coroutine.send(content)
+        response = coroutine(content)
 
         self.assertEqual(WhitespaceTest.expected, response)
 
@@ -24,7 +24,7 @@ class WhitespaceTest (TestCase):
         content = ('  This', 'is', 'the', 'payload')
 
         coroutine = whitespace()
-        response = coroutine.send(content)
+        response = coroutine(content)
 
         self.assertEqual(WhitespaceTest.expected, response)
 
@@ -32,7 +32,7 @@ class WhitespaceTest (TestCase):
         content = ('  This', 'is', 'the', 'payload ')
 
         coroutine = whitespace()
-        response = coroutine.send(content)
+        response = coroutine(content)
 
         self.assertEqual(WhitespaceTest.expected, response)
 
@@ -40,6 +40,6 @@ class WhitespaceTest (TestCase):
         content = ('  This', 'is', 'the', 'payload ')
 
         coroutine = whitespace()
-        response = coroutine.send(content)
+        response = coroutine(content)
 
         self.assertEqual(WhitespaceTest.expected, response)

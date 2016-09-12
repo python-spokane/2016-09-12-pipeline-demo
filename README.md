@@ -6,7 +6,7 @@ Demonstration of application design using pipeline processing (generators, corou
 1. Setup a virtual environment for the project.
 2. Activate the virtual environment.
 3. Install project requirements via PIP.
-  3.1 pip install -r /path/to/2016-09-12-pipeline-demo/requirements.txt
+ 1. pip install -r /path/to/2016-09-12-pipeline-demo/requirements.txt
 
 # Summary
 

@@ -108,5 +108,28 @@ def stdin_capitalize_stdout():
         sink(payload)
 
 
+def stdin_size_duplicate_capitalize_whitespace_stdout():
+
+    source = inputs.stdin()
+    sink = outputs.stdout()
+
+    filter_pipeline = filters.pipeline(
+        filters.size(max_length=12),
+        filters.duplicate()
+    )
+
+    transform_pipeline = transformers.pipeline(
+        transformers.capitalize(),
+        transformers.whitespace()
+    )
+
+    for payload in source:
+        payload = filter_pipeline(payload)
+
+        if payload:
+            payload = transform_pipeline(payload)
+            sink(payload)
+
+
 if __name__ == '__main__':
     stdin_stdout()

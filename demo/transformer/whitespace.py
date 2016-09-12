@@ -38,3 +38,4 @@ def generator():
     while True:
         payload = (yield payload)
         payload = [sub(compiled, '', w) for w in payload]
+        payload = [w for w in payload if w]
